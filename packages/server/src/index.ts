@@ -70,6 +70,10 @@ export class App {
         if (process.env.NODE_ENV !== 'production') {
             this.app.use(cors({ credentials: true, origin: 'http://localhost:8080' }))
         }
+        else{
+            this.app.use(cors());
+            this.app.options('*',cors());
+        }
 
         const upload = multer({ dest: `${path.join(__dirname, '..', 'uploads')}/` })
 
